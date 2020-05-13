@@ -15,10 +15,10 @@ read -p ""
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-  #Archive Plex, backup to Vault, delete tmp
+  #Archive Plex, backup to Vault, delete temp files
   sudo systemctl stop plexmediaserver.service
-  sudo tar -czvf /tmp/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
-  sudo cp -r /tmp/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/Backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
-  sudo rm /tmp/plex_backup.tar.gz
-  sudo systemctl start plexmediaserver
+  sudo tar -czvf /home/nn/plexbackups/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
+  sudo cp -r /home/nn/plexbackups/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/Backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
+  sudo rm /home/nn/plexbackups/plex_backup.tar.gz
+  sudo systemctl start plexmediaserver.service
 fi
