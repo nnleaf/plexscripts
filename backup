@@ -25,5 +25,7 @@ then
   sudo rm /home/nn/plexbackups/plex_backup.tar.gz
   sudo systemctl start plexmediaserver.service
   #Archive Tautulli files, backup to Vault, delete temp files
-
+  sudo tar -czvf  /home/nn/plexbackups/tautulli_backup.tar.gz /opt/Tautulli/config.ini /opt/Tautulli/tautulli.db
+  sudo cp -r /home/nn/plexbackups/tautulli_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/tautulli_backup/tautulli_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
+  sudo rm /home/nn/plexbackups/tautulli_backup.tar.gz
 fi
