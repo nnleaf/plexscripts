@@ -15,10 +15,15 @@ read -p ""
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
+  echo "------------------------------------"
+  echo "--[ Backing up Plex and Tautulli ]--"
+  echo "------------------------------------"
   #Archive Plex, backup to Vault, delete temp files
   sudo systemctl stop plexmediaserver.service
   sudo tar -czvf /home/nn/plexbackups/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
-  sudo cp -r /home/nn/plexbackups/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/Backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
+  sudo cp -r /home/nn/plexbackups/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/plex_backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
   sudo rm /home/nn/plexbackups/plex_backup.tar.gz
   sudo systemctl start plexmediaserver.service
+  #Archive Tautulli files, backup to Vault, delete temp files
+
 fi

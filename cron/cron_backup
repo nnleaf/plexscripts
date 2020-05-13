@@ -14,6 +14,6 @@ echo "--------------------------------"
 #Archive Plex, backup to Vault, delete tmp
 systemctl stop plexmediaserver.service
 tar -czf /home/nn/plexbackups/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
-cp -r /home/nn/plexbackups/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/Backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
+cp -r /home/nn/plexbackups/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/plex_backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
 rm /home/nn/plexbackups/plex_backup.tar.gz
 systemctl start plexmediaserver.service
