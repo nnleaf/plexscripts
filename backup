@@ -10,14 +10,15 @@
 #
 echo "-------------------------------------"
 echo "--[ Turn off Plex to backup?(y/n) ]--"
-read -p "-------------------------------------"
+echo "-------------------------------------"
+read -p ""
 echo
-if [[ $REPLY =~ ^[Yy]$ ]] 
-  then
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
   #Archive Plex, backup to Vault, delete tmp
   sudo systemctl stop plexmediaserver.service
-  tar -czvf /tmp/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
+  sudo tar -czvf /tmp/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
   sudo cp -r /tmp/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/Backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
-  rm /tmp/plex_backup.tar.gz
+  sudo rm /tmp/plex_backup.tar.gz
   sudo systemctl start plexmediaserver
 fi

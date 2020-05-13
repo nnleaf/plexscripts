@@ -1,0 +1,19 @@
+#!/bin/bash
+#     ////     //  ////     //
+#    // //    //  // //    //
+#   //  //   //  //  //   //
+#  //   //  //  //   //  //
+# //    // //  //    // //
+#//     ////  //     ////
+#
+# 20200513 - Created cron_backup
+#
+echo "--------------------------------"
+echo "--[ Run Plex backup to Vault ]--"
+echo "--------------------------------"
+#Archive Plex, backup to Vault, delete tmp
+systemctl stop plexmediaserver.service
+tar -czf /tmp/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
+cp -r /tmp/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex_192.168.1.105/Backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
+rm /tmp/plex_backup.tar.gz
+systemctl start plexmediaserver
