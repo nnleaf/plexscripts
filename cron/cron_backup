@@ -13,11 +13,12 @@ echo "--[ Run Plex and Tautulli backup to Vault ]--"
 echo "---------------------------------------------"
 #Archive Plex, backup to Vault, delete tmp
 systemctl stop plexmediaserver.service
-tar -czf /home/nn/plexbackups/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
-cp -r /home/nn/plexbackups/plex_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex/plex_backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
+tar -czvf /home/nn/plexbackups/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
+mount -t cifs //10.0.100.10/NNVault /mnt/tmp -o credentials=/home/nn/.smbnnvault
+cp -r /home/nn/plexbackups/plex_backup.tar.gz /mnt/tmp/Backup/NNServer/HOME.Plex/plex_backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
 rm /home/nn/plexbackups/plex_backup.tar.gz
 systemctl start plexmediaserver.service
 #Archive Tautulli files, backup to Vault, delete temp files
-tar -czf  /home/nn/plexbackups/tautulli_backup.tar.gz /opt/Tautulli/config.ini /opt/Tautulli/tautulli.db
-cp -r /home/nn/plexbackups/tautulli_backup.tar.gz /vault/n1/Files/NNServer/HOME.Plex/tautulli_backup/tautulli_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
+tar -czvf  /home/nn/plexbackups/tautulli_backup.tar.gz /opt/Tautulli/config.ini /opt/Tautulli/tautulli.db
+cp -r /home/nn/plexbackups/tautulli_backup.tar.gz /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup/tautulli_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
 rm /home/nn/plexbackups/tautulli_backup.tar.gz
