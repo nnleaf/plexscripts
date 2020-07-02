@@ -22,3 +22,4 @@ systemctl start plexmediaserver.service
 tar -czvf  /home/nn/plexbackups/tautulli_backup.tar.gz /opt/Tautulli/config.ini /opt/Tautulli/tautulli.db
 cp -r /home/nn/plexbackups/tautulli_backup.tar.gz /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup/tautulli_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
 rm /home/nn/plexbackups/tautulli_backup.tar.gz
+umount -t cifs //10.0.100.10/NNVault
