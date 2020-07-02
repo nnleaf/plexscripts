@@ -21,7 +21,7 @@ then
   #Archive Plex, backup to Vault, delete temp files
   sudo systemctl stop plexmediaserver.service
   sudo tar -czvf /home/nn/plexbackups/plex_backup.tar.gz --exclude="/var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/Cache" /var/lib/plexmediaserver/Library/Application\ Support/Plex\ Media\ Server/
-  mount -t cifs //10.0.100.10/NNVault /mnt/tmp -o credentials=/home/nn/.smbnnvault
+  sudo mount -t cifs //10.0.100.10/NNVault /mnt/tmp -o credentials=/home/nn/.smbnnvault
   sudo cp -r /home/nn/plexbackups/plex_backup.tar.gz /mnt/tmp/Backup/NNServer/HOME.Plex/plex_backup/plex_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
   sudo rm /home/nn/plexbackups/plex_backup.tar.gz
   sudo systemctl start plexmediaserver.service
