@@ -23,6 +23,6 @@ tar -czvf  /home/nn/plexbackups/tautulli_backup.tar.gz /opt/Tautulli/config.ini 
 cp -r /home/nn/plexbackups/tautulli_backup.tar.gz /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup/tautulli_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
 rm /home/nn/plexbackups/tautulli_backup.tar.gz
 #Delete backups older than 30 days
-find /mnt/tmp/Backup/NNServer/HOME.Plex/plex_backup/ -mtime +30 -exec rm {} +
-find /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup -mtime +30 -exec rm {} +
+find /mnt/tmp/Backup/NNServer/HOME.Plex/plex_backup/ -mtime +30 -exec rm -f {} +
+find /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup -mtime +30 -exec rm -f {} +
 umount -t cifs //10.0.100.10/NNVault

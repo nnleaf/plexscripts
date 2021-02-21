@@ -30,7 +30,7 @@ then
   sudo cp -r /home/nn/plexbackups/tautulli_backup.tar.gz /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup/tautulli_backup_"$(date +%Y-%m-%d_%H%M%S)".tar.gz
   sudo rm /home/nn/plexbackups/tautulli_backup.tar.gz
   #Delete backups older than 30 days
-  sudo find /mnt/tmp/Backup/NNServer/HOME.Plex/plex_backup/ -mtime +30 -exec rm {} +
-  sudo find /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup -mtime +30 -exec rm {} +
+  sudo find /mnt/tmp/Backup/NNServer/HOME.Plex/plex_backup/ -mtime +30 -exec rm -f {} +
+  sudo find /mnt/tmp/Backup/NNServer/HOME.Plex/tautulli_backup -mtime +30 -exec rm -f {} +
   sudo umount -t cifs //10.0.100.10/NNVault
 fi
