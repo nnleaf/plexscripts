@@ -40,7 +40,7 @@ echo "------------------------"
 sudo updatedb
 
 echo "----------------------------"
-echo "--[ Updating Plex? (y/n) ]--"
+echo "--[ Update Plex? (y/n) ]--"
 echo "----------------------------"
 read -p ""
 if [[ $REPLY =~ ^[Yy]$ ]]
